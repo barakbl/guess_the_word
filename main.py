@@ -2,7 +2,6 @@ import curses
 import time
 import signal
 from guess import guess
-import tkinter as tk
 from words import wordsFromFile, wordsFromWikipediaRandom
 
 word = wordsFromWikipediaRandom()
@@ -12,7 +11,6 @@ word = wordsFromWikipediaRandom()
 game = guess(word.get_word())
 
 screen = curses.initscr()
-window = tk.Tk()
 
 
 def losser_winner_screen(message):
