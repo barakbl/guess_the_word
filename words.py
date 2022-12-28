@@ -1,7 +1,7 @@
 import re, random
 import requests
 from bs4 import BeautifulSoup
-
+import os
 
 class wordsBase:
     def __init__(self, source=None, title=None):
@@ -32,7 +32,6 @@ class wordsFromFile(wordsBase):
         with open(self.source, "r", encoding="utf-8") as f:
             self.source_text = f.read()
 
-
 class wordsfromUrl(wordsBase):
     def load_source(self):
         r = requests.get(self.source)
@@ -48,8 +47,6 @@ class wordsFromWikipediaRandom(wordsfromUrl):
 
 
 if __name__ == "__main__":
-    w = wordsFromFile("/Users/barakbloch/dev/guess/resources/words.txt")
-    print(w.words)
-    for i in range(100):
-        print(w.get_word())
-        print(len(w.words))
+    w = wordsFromFile(source=os.path.abspath("resources/words.txt"))
+    print(w.get_word())
+    print(len(w.words))
